@@ -9,18 +9,12 @@ export async function POST(request: NextRequest) {
 
     // Validate PIN
     if (!pin) {
-      return NextResponse.json(
-        { error: "PIN is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "PIN is required" }, { status: 400 });
     }
 
     // Check if PIN matches
     if (pin !== ADMIN_PIN) {
-      return NextResponse.json(
-        { error: "Invalid PIN" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Invalid PIN" }, { status: 401 });
     }
 
     // Generate JWT token
@@ -48,7 +42,6 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (error) {
-    console.error("Login error:", error);
     return NextResponse.json(
       { error: "Authentication failed" },
       { status: 500 }

@@ -2,7 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Calendar, Clock, User, Mail, Phone, PawPrint, LogOut, RefreshCw } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  User,
+  Mail,
+  Phone,
+  PawPrint,
+  LogOut,
+  RefreshCw,
+} from "lucide-react";
 
 interface Appointment {
   id: number;
@@ -55,9 +64,8 @@ export default function AdminDashboard() {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
+    } finally {
       router.push("/admin/login");
-    } catch (error) {
-      console.error("Logout error:", error);
     }
   };
 
@@ -167,11 +175,15 @@ export default function AdminDashboard() {
                       <div className="space-y-2">
                         <div className="flex items-center gap-2 text-sm">
                           <Mail className="h-4 w-4 text-gray-400" />
-                          <span className="text-gray-900">{appointment.email}</span>
+                          <span className="text-gray-900">
+                            {appointment.email}
+                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
                           <Phone className="h-4 w-4 text-gray-400" />
-                          <span className="text-gray-900">{appointment.phone}</span>
+                          <span className="text-gray-900">
+                            {appointment.phone}
+                          </span>
                         </div>
                       </div>
 
@@ -195,7 +207,9 @@ export default function AdminDashboard() {
                         <div className="flex items-center gap-2 text-sm">
                           <Calendar className="h-4 w-4 text-gray-400" />
                           <span className="text-gray-900">
-                            {new Date(appointment.preferredDate).toLocaleDateString()}
+                            {new Date(
+                              appointment.preferredDate
+                            ).toLocaleDateString()}
                           </span>
                         </div>
                         <div className="flex items-center gap-2 text-sm">
@@ -210,8 +224,12 @@ export default function AdminDashboard() {
                     {/* Notes */}
                     {appointment.notes && (
                       <div className="border-t border-gray-200 pt-3">
-                        <p className="text-sm font-semibold text-gray-700">Notes:</p>
-                        <p className="mt-1 text-sm text-gray-600">{appointment.notes}</p>
+                        <p className="text-sm font-semibold text-gray-700">
+                          Notes:
+                        </p>
+                        <p className="mt-1 text-sm text-gray-600">
+                          {appointment.notes}
+                        </p>
                       </div>
                     )}
                   </div>
