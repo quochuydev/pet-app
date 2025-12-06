@@ -1,0 +1,279 @@
+name: Create ThemeForest Release Package
+
+on:
+  # Trigger when you create a new tag like v1.0.0
+  push:
+    tags:
+      - "v*"
+
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g., 1.0.0)"
+        required: true
+        default: "1.0.0"
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Create package directory
+        run: mkdir -p themeforest-package
+
+      - name: Copy required files and folders
+        run: |
+          # Copy everything except excluded files/folders
+          rsync -av --progress . themeforest-package/ \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='.next' \
+            --exclude='out' \
+            --exclude='.env.local' \
+            --exclude='.env' \
+            --exclude='themeforest-package' \
+            --exclude='.DS_Store' \
+            --exclude='Thumbs.db' \
+            --exclude='*.log' \
+            --exclude='.idea' \
+            --exclude='.vscode' \
+            --exclude='coverage' \
+            --exclude='.turbo' \
+            --exclude='dist' \
+            --exclude='.claude' \
+            --exclude='CLAUDE.md' \
+            --exclude='design' \
+            --exclude='checklists' \
+            --exclude='docker-compose.yml' \
+            --exclude='drizzle' \
+            --exclude='DATABASE.md' \
+            --exclude='submission-form.md' \
+            --exclude='nixpacks.toml'
+
+      - name: Remove unnecessary files from package
+        run: |
+          # Remove any system files that might have been copied
+          find themeforest-package -name ".DS_Store" -type f -delete
+          find themeforest-package -name "Thumbs.db" -type f -delete
+          find themeforest-package -name "*.swp" -type f -delete
+          find themeforest-package -name "*.swo" -type f -delete
+
+          # Remove any test files
+          find themeforest-package -name "*.test.ts" -type f -delete
+          find themeforest-package -name "*.test.tsx" -type f -delete
+          find themeforest-package -name "*.spec.ts" -type f -delete
+          find themeforest-package -name "*.spec.tsx" -type f -delete
+
+      - name: Get version from tag or input
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create tag for manual dispatch
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${{ steps.version.outputs.VERSION }}" -m "Release v${{ steps.version.outputs.VERSION }}"
+          git push origin "v${{ steps.version.outputs.VERSION }}"
+
+      - name: Create LICENSE file for package
+        run: |
+          cat > themeforest-package/LICENSE.txt << 'EOF'
+          ENVATO MARKET LICENSE
+
+          This item is licensed under the Envato Market License.
+
+          For Regular License:
+          - Use in a single end product that end users are not charged for
+          - The end product is distributed for free
+
+          For Extended License:
+          - Use in a single end product that end users can be charged for
+          - The end product is sold to multiple customers
+
+          Full license terms: https://themeforest.net/licenses/standard
+
+          Item: Petcare - Pet Clinic HTML Template
+          Version: ${{ steps.version.outputs.VERSION }}
+          Author: [Your Name]
+          Purchase Date: [Date]
+          License Type: [Regular/Extended]
+          EOF
+
+      - name: Create CHANGELOG file
+        run: |
+          cat > themeforest-package/CHANGELOG.txt << 'EOF'
+          CHANGELOG
+          =========
+
+          Version ${{ steps.version.outputs.VERSION }} - $(date +%Y-%m-%d)
+          -------------------
+          - Initial release
+          - Modern Next.js 16 pet clinic template
+          - Fully responsive design
+          - Booking system with database integration
+          - Admin dashboard for appointment management
+          - Complete documentation
+          - TypeScript support
+          - Tailwind CSS 4 styling
+
+          EOF
+
+      - name: Verify package structure
+        run: |
+          echo "📦 Package Structure:"
+          ls -la themeforest-package/
+          echo ""
+          echo "📊 Package Size:"
+          du -sh themeforest-package/
+          echo ""
+          echo "📄 File Count:"
+          find themeforest-package -type f | wc -l
+
+      - name: Create ZIP archive
+        run: |
+          cd themeforest-package
+          zip -r ../petcare-v${{ steps.version.outputs.VERSION }}.zip . \
+            -x "*.DS_Store" \
+            -x "*Thumbs.db" \
+            -x "*.git*" \
+            -x "*node_modules/*" \
+            -x "*.next/*"
+          cd ..
+
+      - name: Verify ZIP file
+        run: |
+          echo "✅ ZIP File Created:"
+          ls -lh petcare-v${{ steps.version.outputs.VERSION }}.zip
+          echo ""
+          echo "📦 ZIP Contents:"
+          unzip -l petcare-v${{ steps.version.outputs.VERSION }}.zip | head -30
+
+      - name: Generate package manifest
+        run: |
+          cat > package-manifest.txt << 'EOF'
+          ThemeForest Package Manifest
+          =============================
+
+          Package: Petcare - Pet Clinic HTML Template
+          Version: ${{ steps.version.outputs.VERSION }}
+          Created: $(date +%Y-%m-%d\ %H:%M:%S)
+
+          Included Files:
+          ---------------
+          EOF
+
+          echo "Directories:" >> package-manifest.txt
+          find themeforest-package -type d -maxdepth 1 | tail -n +2 | sed 's/themeforest-package\//  ✓ /' >> package-manifest.txt
+
+          echo "" >> package-manifest.txt
+          echo "Configuration Files:" >> package-manifest.txt
+          find themeforest-package -maxdepth 1 -type f | sed 's/themeforest-package\//  ✓ /' >> package-manifest.txt
+
+          echo "" >> package-manifest.txt
+          echo "Statistics:" >> package-manifest.txt
+          echo "  Total Files: $(find themeforest-package -type f | wc -l)" >> package-manifest.txt
+          echo "  Total Size: $(du -sh themeforest-package | cut -f1)" >> package-manifest.txt
+          echo "  ZIP Size: $(ls -lh petcare-v${{ steps.version.outputs.VERSION }}.zip | awk '{print $5}')" >> package-manifest.txt
+
+          cat package-manifest.txt
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: v${{ steps.version.outputs.VERSION }}
+          files: |
+            petcare-v${{ steps.version.outputs.VERSION }}.zip
+            package-manifest.txt
+          body: |
+            # Petcare v${{ steps.version.outputs.VERSION }} - ThemeForest Package
+
+            ## 📦 What's Included
+
+            This release contains the complete ThemeForest-ready package including:
+
+            - ✅ All source code (app/, public/, db/, lib/)
+            - ✅ Complete HTML documentation
+            - ✅ README files (quick start + detailed)
+            - ✅ Configuration files
+            - ✅ .env.example template
+            - ✅ LICENSE and CHANGELOG
+
+            ## 🚀 Installation
+
+            1. Extract the ZIP file
+            2. Run `pnpm install`
+            3. Copy `.env.example` to `.env.local` and configure
+            4. Run `pnpm dev` to start development server
+            5. Run `pnpm build` for production build
+
+            ## 📚 Documentation
+
+            Open `documentation/index.html` in your browser for complete documentation.
+
+            ## ⚠️ Important Notes
+
+            - This package does NOT include `node_modules` (install with `pnpm install`)
+            - This package does NOT include `.env.local` (create from `.env.example`)
+            - Replace demo images with your own before going live
+            - Update LICENSE.txt with your Envato purchase details
+
+            ## 🔗 Links
+
+            - [ThemeForest Item](https://themeforest.net)
+            - [Documentation](documentation/index.html)
+            - [Support](mailto:your-support@email.com)
+
+            ---
+
+            **Ready for ThemeForest submission!** 🎉
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: themeforest-package-v${{ steps.version.outputs.VERSION }}
+          path: petcare-v${{ steps.version.outputs.VERSION }}.zip
+          retention-days: 90
+
+      - name: Success message
+        run: |
+          echo "✅ ThemeForest package created successfully!"
+          echo ""
+          echo "📦 Package: petcare-v${{ steps.version.outputs.VERSION }}.zip"
+          echo "📊 Size: $(ls -lh petcare-v${{ steps.version.outputs.VERSION }}.zip | awk '{print $5}')"
+          echo ""
+          echo "🎉 Release published on GitHub!"
+          echo "📥 Download from: https://github.com/${{ github.repository }}/releases"
