@@ -43,28 +43,24 @@ jobs:
 
       - name: Copy required files and folders
         run: |
-          # Copy main directories
-          cp -r app themeforest-package/
-          cp -r public themeforest-package/
-          cp -r documentation themeforest-package/
-          cp -r db themeforest-package/
-          cp -r lib themeforest-package/
-
-          # Copy configuration files
-          cp package.json themeforest-package/
-          cp pnpm-lock.yaml themeforest-package/
-          cp tsconfig.json themeforest-package/
-          cp next.config.ts themeforest-package/
-          cp tailwind.config.ts themeforest-package/
-          cp postcss.config.mjs themeforest-package/
-          cp eslint.config.mjs themeforest-package/
-          cp components.json themeforest-package/
-
-          # Copy documentation files
-          cp README.txt themeforest-package/
-          cp README.md themeforest-package/
-          cp .env.example themeforest-package/
-          cp .gitignore themeforest-package/
+          # Copy everything except excluded files/folders
+          rsync -av --progress . themeforest-package/ \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='.next' \
+            --exclude='out' \
+            --exclude='.env.local' \
+            --exclude='.env' \
+            --exclude='themeforest-package' \
+            --exclude='.DS_Store' \
+            --exclude='Thumbs.db' \
+            --exclude='*.log' \
+            --exclude='.idea' \
+            --exclude='.vscode' \
+            --exclude='coverage' \
+            --exclude='.turbo' \
+            --exclude='dist'
 
       - name: Remove unnecessary files from package
         run: |
