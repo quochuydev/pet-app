@@ -195,6 +195,7 @@ jobs:
           cat package-manifest.txt
 
       - name: Create GitHub Release
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
           files: |
