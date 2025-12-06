@@ -18,11 +18,13 @@ A modern, welcoming landing page design for a pet clinic that emphasizes care, p
   - About Us
   - Contact
 - Call-to-Action Button: "Book Appointment"
+- Mobile hamburger menu toggle
 
 **Style Notes:**
 - Clean, minimal design
 - Sticky navigation for easy access
 - High contrast for readability
+- Responsive mobile menu
 
 ---
 
@@ -50,19 +52,22 @@ A modern, welcoming landing page design for a pet clinic that emphasizes care, p
 
 **Title:** "Our Services"
 
-**Service Cards:**
+**Service Cards (2 featured services):**
 
 #### Card 1: General Checkup
 - **Image:** `service_general_checkup.jpg`
 - **Title:** "General Health Checkups"
 - **Description:** "Comprehensive wellness exams to keep your pet healthy and happy"
-- **Icon/Badge:** Stethoscope icon
+- **Icon:** Stethoscope icon
 
 #### Card 2: Inpatient Care
 - **Image:** `service_inpatient.jpg`
 - **Title:** "Inpatient & Emergency Care"
 - **Description:** "24/7 emergency services and comfortable inpatient facilities for your pet's recovery"
-- **Icon/Badge:** Hospital/Emergency icon
+- **Icon:** Hospital/Emergency icon
+
+**Additional:**
+- "View All Services" link to `/services`
 
 **Style Notes:**
 - Card-based design with hover effects
@@ -78,47 +83,47 @@ A modern, welcoming landing page design for a pet clinic that emphasizes care, p
 **Title:** "Meet Our Expert Team"
 **Subtitle:** "Experienced veterinarians dedicated to your pet's wellbeing"
 
-**Vet Cards:**
+**Vet Cards (4 veterinarians):**
 
 #### Vet 1
 - **Image:** `vet_01.jpg`
-- **Name:** "Dr. [Name]"
+- **Name:** "Dr. Sarah Mitchell"
 - **Specialization:** "Senior Veterinarian"
-- **Brief Bio:** Short 1-2 sentence description
+- **Brief Bio:** "15+ years of experience in small animal care"
 
 #### Vet 2
 - **Image:** `vet_02.jpg`
-- **Name:** "Dr. [Name]"
+- **Name:** "Dr. James Chen"
 - **Specialization:** "Emergency Care Specialist"
-- **Brief Bio:** Short 1-2 sentence description
+- **Brief Bio:** "Expert in critical care and emergency medicine"
 
 #### Vet 3
 - **Image:** `vet_03.jpg`
-- **Name:** "Dr. [Name]"
+- **Name:** "Dr. Emily Rodriguez"
 - **Specialization:** "Surgery & Dentistry"
-- **Brief Bio:** Short 1-2 sentence description
+- **Brief Bio:** "Specialized in advanced surgical procedures"
 
 #### Vet 4
 - **Image:** `vet_04.jpg`
-- **Name:** "Dr. [Name]"
+- **Name:** "Dr. Michael Thompson"
 - **Specialization:** "Preventive Care"
-- **Brief Bio:** Short 1-2 sentence description
+- **Brief Bio:** "Focused on wellness and preventive medicine"
 
 **Style Notes:**
-- Circular or rounded profile images
+- Circular profile images
 - Consistent card styling
-- Hover effect to show more information
+- Hover effect
 - Professional, trustworthy presentation
 
 ---
 
 ### 5. Why Choose Us Section
-**Layout:** Icon-based features (3-4 columns)
+**Layout:** Icon-based features (4 columns)
 
 **Title:** "Why Choose [Clinic Name]?"
 
 **Features:**
-- **Experience:** "15+ years serving the community"
+- **15+ Years Experience:** "Serving the community with excellence"
 - **Compassionate Care:** "Treating every pet like family"
 - **Modern Facilities:** "State-of-the-art equipment"
 - **24/7 Emergency:** "Always here when you need us"
@@ -130,48 +135,33 @@ A modern, welcoming landing page design for a pet clinic that emphasizes care, p
 
 ---
 
-### 6. Testimonials Section (Optional)
-**Layout:** Carousel or grid
-
-**Title:** "What Pet Parents Say"
-
-**Content:**
-- 3-5 customer testimonials
-- Star ratings
-- Customer names and pet photos (if available)
-
-**Style Notes:**
-- Card-based design
-- Gentle background color
-- Quote marks or testimonial styling
-
----
-
-### 7. Call-to-Action Section
-**Layout:** Full-width banner
+### 6. Call-to-Action Section
+**Layout:** Full-width banner with gradient background
 
 **Content:**
 - **Headline:** "Ready to Give Your Pet the Best Care?"
 - **Subtext:** "Schedule an appointment today"
 - **CTA Button:** "Book Now"
-- **Additional Info:** Phone number and address
+- **Contact Info:**
+  - Phone: (555) 123-4567
+  - Address: 123 Main Street, City, State 12345
 
 **Style Notes:**
-- Bold, contrasting colors
-- Large, prominent button
+- Blue gradient background
+- Large, prominent button (orange)
 - High visual hierarchy
 
 ---
 
-### 8. Footer
-**Layout:** Multi-column layout
+### 7. Footer
+**Layout:** Multi-column layout (4 columns on desktop)
 
 **Columns:**
 
 #### Column 1: About
 - Clinic logo
 - Brief description
-- Social media icons
+- Social media icons (Facebook, Twitter, Instagram, LinkedIn)
 
 #### Column 2: Quick Links
 - Home
@@ -182,23 +172,28 @@ A modern, welcoming landing page design for a pet clinic that emphasizes care, p
 #### Column 3: Services
 - General Checkup
 - Emergency Care
-- Surgery
-- Preventive Care
+- Vaccination
+- Dental Care
 
 #### Column 4: Contact Info
-- Address
-- Phone number
-- Email
-- Business hours
+- Address: 123 Main Street, City, State 12345
+- Phone: (555) 123-4567
+- Email: info@petcareclinic.com
+- Business hours:
+  - Mon-Fri: 8 AM - 8 PM
+  - Sat-Sun: 9 AM - 6 PM
 
 **Bottom Bar:**
-- Copyright notice
-- Privacy Policy
-- Terms of Service
+- Copyright notice: "© 2024 PetCare Clinic. All rights reserved."
+
+**Style Notes:**
+- Dark background
+- Light text for contrast
+- Organized column structure
 
 ---
 
-## Color Scheme Suggestions
+## Color Scheme
 - **Primary Color:** Calming blue or green (trust, health)
 - **Secondary Color:** Warm orange or coral (friendly, caring)
 - **Neutral:** White, light gray backgrounds
@@ -206,8 +201,8 @@ A modern, welcoming landing page design for a pet clinic that emphasizes care, p
 - **Accents:** Bright color for CTAs
 
 ## Typography
-- **Headings:** Bold, modern sans-serif (e.g., Poppins, Montserrat)
-- **Body Text:** Clean, readable sans-serif (e.g., Open Sans, Roboto)
+- **Headings:** Bold, modern sans-serif (Geist)
+- **Body Text:** Clean, readable sans-serif (Geist)
 - **Hierarchy:** Clear size differentiation between H1, H2, H3
 
 ## Responsive Design Notes
@@ -217,28 +212,9 @@ A modern, welcoming landing page design for a pet clinic that emphasizes care, p
 - Touch-friendly button sizes
 - Optimized image loading
 
-## Key Features
-- Fast loading times
-- Accessibility compliant
-- SEO optimized
-- Clear call-to-actions throughout
-- Easy navigation
-- Professional imagery showcasing care and expertise
-
 ---
 
 ## Image Usage Summary
 - **Hero:** sample_pet_dog_02.jpg
 - **Services:** service_general_checkup.jpg, service_inpatient.jpg
 - **Team:** vet_01.jpg, vet_02.jpg, vet_03.jpg, vet_04.jpg
-
----
-
-## Next Steps
-1. Choose color scheme and fonts
-2. Create wireframes based on this layout
-3. Design high-fidelity mockups
-4. Develop responsive HTML/CSS
-5. Add interactivity with JavaScript
-6. Test across devices and browsers
-7. Optimize for performance and SEO
