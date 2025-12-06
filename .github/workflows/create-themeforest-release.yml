@@ -245,7 +245,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: themeforest-package-v${{ steps.version.outputs.VERSION }}
           path: petcare-v${{ steps.version.outputs.VERSION }}.zip
