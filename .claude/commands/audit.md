@@ -1,163 +1,50 @@
-# Project Audit Command
+# Audit Checklist Command
 
-Perform a comprehensive audit of the codebase against all quality, performance, security, and marketplace standards defined in the checklists directory.
+When this command is run, review all checklist files in the `checklists/` directory and tick `[x]` for completed items directly in the existing checklist files.
 
-## Audit Scope
+## Instructions:
 
-Review the codebase against ALL checklists in `/checklists/`:
+1. **Read all checklist files** in `checklists/` directory
+2. **Review the current codebase** against each checklist item
+3. **Update the checklist files directly** - mark items as `[x]` if they are completed
+4. **DO NOT create new files** - only update existing checklist files
+5. **DO NOT create summary reports** - just update the checklists in place
+6. **Focus on verification** - check if each item is actually implemented
 
-1. **Standard Performance Checklist** (`standard-performance-checklist.md`)
-   - Core Web Vitals (LCP, INP, CLS)
-   - React Server Components usage
-   - Bundle size and code splitting
-   - Image optimization
-   - Rendering strategies
-   - Font optimization
-   - Caching strategies
-   - Build optimization
+## Available Checklists:
 
-2. **Standard Coding Checklist** (`standard-coding-checklist.md`)
-   - Code quality and best practices
-   - TypeScript standards
-   - Component architecture
-   - File structure and organization
-   - Naming conventions
-   - Documentation standards
+- `standard-coding-checklist.md` - Next.js coding standards and best practices
+- `standard-performance-checklist.md` - Performance optimization checklist
+- `standard-security-checklist.md` - Security best practices and OWASP compliance
+- `themeforest-requirement-checklist.md` - ThemeForest submission requirements
 
-3. **Standard Security Checklist** (`standard-security-checklist.md`)
-   - Common vulnerabilities (OWASP Top 10)
-   - Input validation and sanitization
-   - Authentication and authorization
-   - Data protection
-   - Dependency security
-   - Configuration security
-
-4. **ThemeForest Requirements Checklist** (`themeforest-requirement-checklist.md`)
-   - Documentation requirements
-   - Code quality standards
-   - Browser compatibility
-   - Responsive design
-   - Licensing and credits
-   - File organization for marketplace
-
-## Audit Process
+## Process:
 
 For each checklist:
 
-1. **Read the checklist file** completely to understand all requirements
-2. **Analyze the codebase** systematically:
-   - Review relevant files and directories
-   - Check configurations (next.config.js, tsconfig.json, etc.)
-   - Examine component implementations
-   - Review package.json dependencies
-   - Inspect build output and bundle analysis
+1. Read the current state of the checklist file
+2. Examine the codebase to verify each unchecked item
+3. If the item is completed/implemented, change `[ ]` to `[x]`
+4. Update the checklist file with the changes
+5. Move to the next checklist
 
-3. **Document findings** for each category:
-   -  **Passed items** - Requirements that are met
-   -   **Warnings** - Items that need attention or could be improved
-   - L **Failed items** - Requirements that are not met
-   - =Ý **Not Applicable** - Items that don't apply to this project
+## Example:
 
-4. **Provide recommendations**:
-   - Prioritize issues (Critical, High, Medium, Low)
-   - Suggest specific fixes with file paths and line numbers
-   - Estimate effort for each fix (Quick Win, Small, Medium, Large)
-   - Link to relevant documentation or examples
+**Before:**
+```markdown
+- [ ] Use Server Components by default
+- [ ] Add 'use client' directive only when needed
+```
 
-## Output Format
+**After (if implemented):**
+```markdown
+- [x] Use Server Components by default
+- [x] Add 'use client' directive only when needed
+```
 
-Generate a structured audit report with:
+## Notes:
 
-### Executive Summary
-- Overall compliance score (percentage)
-- Total items: Passed / Warnings / Failed / N/A
-- Critical issues requiring immediate attention
-- Quick wins for easy improvements
-
-### Detailed Findings by Checklist
-
-For each checklist, provide:
-
-**Checklist Name**
-- Compliance Score: X/Y items passed (Z%)
-- Status breakdown
-
-**Passed Items** 
-- List items that meet requirements
-
-**Warnings**  
-- Item description
-- Current state
-- Recommendation
-- Priority + Effort
-- File references
-
-**Failed Items** L
-- Item description
-- Why it failed
-- Required action
-- Priority + Effort
-- File references
-
-### Action Plan
-
-Prioritized list of all issues:
-
-1. **Critical Issues** (Must fix before production)
-2. **High Priority** (Should fix soon)
-3. **Medium Priority** (Nice to have)
-4. **Low Priority** (Future improvements)
-
-For each issue:
-- [ ] Issue description
-- Files: `path/to/file.tsx:line`
-- Effort: [Quick Win|Small|Medium|Large]
-- Recommendation: Specific steps to fix
-
-### Tools & Resources
-
-List tools needed for verification:
-- @next/bundle-analyzer
-- Lighthouse CI
-- ESLint/Prettier
-- Security scanners
-- etc.
-
-## Execution Guidelines
-
-1. **Be thorough** - Check every item in every checklist
-2. **Be specific** - Reference exact files and line numbers
-3. **Be actionable** - Provide clear fix recommendations
-4. **Be realistic** - Consider project stage and requirements
-5. **Be constructive** - Focus on improvements, not criticism
-
-## Special Focus Areas
-
-Based on project context (pet clinic Next.js app):
-
-- **Performance**: Lighthouse score should be 90+
-- **Images**: All 8 images should use next/image with optimization
-- **Components**: Should be Server Components by default
-- **Fonts**: Geist fonts properly configured
-- **Build**: Clean build output with no warnings
-- **Security**: No secrets in code, proper input validation
-- **Mobile**: Responsive design working correctly
-
-## Follow-up Actions
-
-After generating the report:
-
-1. Ask user which priority level to tackle first
-2. Create TodoWrite items for selected fixes
-3. Implement fixes systematically
-4. Re-run audit after fixes to verify
-5. Track progress and update report
-
----
-
-**Note**: This audit should be run:
-- Before deploying to production
-- After major feature additions
-- During regular code reviews
-- When preparing for marketplace submission
-- After dependency updates
+- Be honest in assessment - only tick items that are truly completed
+- If something is partially done, leave it unchecked with a comment if needed
+- This is a living document - run this audit regularly to track progress
+- Focus on the actual implementation, not intentions or plans
