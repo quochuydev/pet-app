@@ -4,15 +4,15 @@ on:
   # Trigger when you create a new tag like v1.0.0
   push:
     tags:
-      - 'v*'
+      - "v*"
 
   # Allow manual trigger from GitHub Actions tab
   workflow_dispatch:
     inputs:
       version:
-        description: 'Release version (e.g., 1.0.0)'
+        description: "Release version (e.g., 1.0.0)"
         required: true
-        default: '1.0.0'
+        default: "1.0.0"
 
 jobs:
   create-release:
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -60,7 +60,18 @@ jobs:
             --exclude='.vscode' \
             --exclude='coverage' \
             --exclude='.turbo' \
-            --exclude='dist'
+            --exclude='dist' \
+            --exclude='.claude' \
+            --exclude='CLAUDE.md' \
+            --exclude='DATABASE.md' \
+            --exclude='PACKAGING-GUIDE.md' \
+            --exclude='RELEASE.md' \
+            --exclude='submission-form.md' \
+            --exclude='design' \
+            --exclude='checklists' \
+            --exclude='docker-compose.yml' \
+            --exclude='drizzle' \
+            --exclude='nixpacks.toml'
 
       - name: Remove unnecessary files from package
         run: |
