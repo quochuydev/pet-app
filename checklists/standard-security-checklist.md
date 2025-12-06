@@ -6,14 +6,14 @@ This comprehensive security checklist covers critical vulnerabilities, OWASP Top
 
 ---
 
-## =¨ Critical 2025 Vulnerabilities (Patch Immediately!)
+## Critical 2025 Vulnerabilities (Patch Immediately!)
 
 ### CVE-2025-55182 & CVE-2025-66478 (CVSS 10.0) - Remote Code Execution
-- [ ] **Verify version**: Check if running Next.js 15.x or 16.x
-- [ ] **Upgrade immediately** to patched versions:
+- [x] **Verify version**: Check if running Next.js 15.x or 16.x
+- [x] **Upgrade immediately** to patched versions:
   - Next.js 16.0.7+
   - Next.js 15.5.7, 15.4.8, 15.3.6, 15.2.6, 15.1.9, or 15.0.5+
-- [ ] **Unaffected versions**: Next.js 13.x, 14.x stable, Pages Router
+- [x] **Unaffected versions**: Next.js 13.x, 14.x stable, Pages Router
 - [ ] **Deploy WAF rules** if immediate upgrade not possible
 - [ ] **Monitor** HTTP traffic to Server Function endpoints for suspicious requests
 
@@ -36,7 +36,7 @@ This comprehensive security checklist covers critical vulnerabilities, OWASP Top
 
 ---
 
-## =á OWASP Top 10 Security Risks
+## OWASP Top 10 Security Risks
 
 ### 1. Broken Access Control (OWASP #1)
 
@@ -50,7 +50,7 @@ This comprehensive security checklist covers critical vulnerabilities, OWASP Top
 - [ ] **Verify auth in every Server Action** before executing mutations
 
 ```typescript
-//  Data Access Layer pattern
+//  Data Access Layer pattern
 import { verifySession } from '@/lib/auth'
 
 export async function getUser() {
@@ -71,7 +71,7 @@ export async function getUser() {
 - [ ] **Protect API routes** in middleware matcher
 
 ```typescript
-//  middleware.ts pattern
+//  middleware.ts pattern
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
@@ -116,7 +116,7 @@ export const config = {
 - [ ] **Use Web Crypto API** for client-side encryption if needed
 
 ```typescript
-//  Password hashing with bcrypt
+//  Password hashing with bcrypt
 import bcrypt from 'bcryptjs'
 
 async function hashPassword(password: string): Promise<string> {
@@ -137,7 +137,7 @@ async function verifyPassword(password: string, hash: string): Promise<boolean> 
 - [ ] **Never store sensitive data** in localStorage (XSS vulnerable)
 
 ```typescript
-//  Secure cookie configuration
+//  Secure cookie configuration
 import { cookies } from 'next/headers'
 
 export async function setSessionCookie(token: string) {
@@ -163,7 +163,7 @@ export async function setSessionCookie(token: string) {
 - [ ] **Limit query results** to prevent data leakage
 
 ```typescript
-//  Parameterized query with Prisma
+//  Parameterized query with Prisma
 import { prisma } from '@/lib/prisma'
 
 async function getUserByEmail(email: string) {
@@ -187,7 +187,7 @@ async function getUserByEmail(email: string) {
 - [ ] **Avoid eval()** and new Function()
 
 ```typescript
-//  Sanitize HTML before rendering
+//  Sanitize HTML before rendering
 import DOMPurify from 'isomorphic-dompurify'
 
 function UserContent({ html }: { html: string }) {
@@ -227,7 +227,7 @@ function UserContent({ html }: { html: string }) {
 - [ ] **Consider using Upstash Rate Limit** or similar
 
 ```typescript
-//  Rate limiting with Upstash
+//  Rate limiting with Upstash
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 
@@ -262,7 +262,7 @@ export async function POST(request: Request) {
 - [ ] **Document required env vars** in .env.example
 
 ```typescript
-//  Validate environment variables
+//  Validate environment variables
 import { z } from 'zod'
 
 const envSchema = z.object({
@@ -284,7 +284,7 @@ export const env = envSchema.parse(process.env)
 - [ ] **Remove X-Powered-By** header
 
 ```typescript
-//  Security headers in next.config.js
+//  Security headers in next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
@@ -334,7 +334,7 @@ module.exports = nextConfig
 - [ ] **Limit exposed headers**
 
 ```typescript
-//  Secure CORS configuration
+//  Secure CORS configuration
 export async function GET(request: Request) {
   const origin = request.headers.get('origin')
   const allowedOrigins = ['https://example.com', 'https://app.example.com']
@@ -363,7 +363,7 @@ export async function GET(request: Request) {
 - [ ] **Pin dependency versions** in production
 
 ```bash
-#  Check for vulnerabilities
+#  Check for vulnerabilities
 pnpm audit
 pnpm outdated
 
@@ -436,7 +436,7 @@ pnpm audit --fix
 - [ ] **Set appropriate log levels** (debug, info, warn, error)
 
 ```typescript
-//  Secure logging
+//  Secure logging
 import pino from 'pino'
 
 const logger = pino({
@@ -476,7 +476,7 @@ logger.info({ password: '123456' }) // DANGEROUS!
 - [ ] **Validate URL protocols** (only allow http/https)
 
 ```typescript
-//  Validate URL before fetching
+//  Validate URL before fetching
 function isAllowedUrl(url: string): boolean {
   const parsed = new URL(url)
 
@@ -504,7 +504,7 @@ export async function fetchExternal(url: string) {
 
 ---
 
-## = Server Actions Security
+## Server Actions Security
 
 ### Input Validation
 - [ ] **Validate all inputs** with Zod or similar schema validator
@@ -514,7 +514,7 @@ export async function fetchExternal(url: string) {
 - [ ] **Validate file uploads** (size, type, content)
 
 ```typescript
-//  Server Action with validation
+//  Server Action with validation
 'use server'
 
 import { z } from 'zod'
@@ -542,7 +542,7 @@ export async function createUser(formData: FormData) {
 - [ ] **Use Data Access Layer** for consistent checks
 
 ```typescript
-//  Server Action with authorization
+//  Server Action with authorization
 'use server'
 
 import { verifySession } from '@/lib/auth'
@@ -571,7 +571,7 @@ export async function deletePost(postId: string) {
 
 ---
 
-## < API Route Security
+## API Route Security
 
 ### API Route Handlers
 - [ ] **Validate all inputs** in route handlers
@@ -582,7 +582,7 @@ export async function deletePost(postId: string) {
 - [ ] **Use proper HTTP methods** (GET, POST, PUT, DELETE)
 
 ```typescript
-//  Secure API route handler
+//  Secure API route handler
 import { NextRequest, NextResponse } from 'next/server'
 import { verifySession } from '@/lib/auth'
 import { z } from 'zod'
@@ -647,7 +647,7 @@ export async function POST(request: NextRequest) {
 
 ### Common Input Validation Patterns
 ```typescript
-//  Comprehensive validation with Zod
+//  Comprehensive validation with Zod
 import { z } from 'zod'
 
 const userSchema = z.object({
@@ -665,7 +665,7 @@ const validated = userSchema.parse(userInput)
 
 ---
 
-## =Ä Database Security
+## Database Security
 
 ### Query Security
 - [ ] **Use parameterized queries** or ORMs (Prisma, Drizzle)
@@ -685,7 +685,7 @@ const validated = userSchema.parse(userInput)
 
 ---
 
-## =Á File Upload Security
+## File Upload Security
 
 ### Upload Validation
 - [ ] **Validate file type** (MIME type and extension)
@@ -696,7 +696,7 @@ const validated = userSchema.parse(userInput)
 - [ ] **Set Content-Disposition** headers for downloads
 
 ```typescript
-//  Secure file upload validation
+//  Secure file upload validation
 import { z } from 'zod'
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
@@ -723,7 +723,7 @@ async function validateFileUpload(file: File) {
 
 ---
 
-## >ê Security Testing
+## Security Testing
 
 ### Testing Checklist
 - [ ] **Run OWASP ZAP** automated scans
@@ -743,7 +743,7 @@ async function validateFileUpload(file: File) {
 
 ---
 
-## =€ Production Security Checklist
+## Production Security Checklist
 
 ### Pre-Deployment
 - [ ] **All dependencies updated** and vulnerabilities fixed
@@ -768,7 +768,7 @@ async function validateFileUpload(file: File) {
 
 ---
 
-## =Ê Security Monitoring & Incident Response
+## Security Monitoring & Incident Response
 
 ### Real-Time Monitoring
 - [ ] **Set up Sentry** or similar error tracking
@@ -788,7 +788,7 @@ async function validateFileUpload(file: File) {
 
 ---
 
-## =à Security Tools & Resources
+## Security Tools & Resources
 
 ### Essential Tools
 - **Dependency Scanning**: Snyk, GitHub Dependabot, npm audit
@@ -806,7 +806,7 @@ async function validateFileUpload(file: File) {
 
 ---
 
-## =Ú References & Sources
+## References & Sources
 
 ### Official Documentation
 - [How to Think About Security in Next.js](https://nextjs.org/blog/security-nextjs-server-components-actions)
@@ -825,7 +825,7 @@ async function validateFileUpload(file: File) {
 
 ---
 
-## =Ý Notes
+## Notes
 
 - **Security is a continuous process**, not a one-time task
 - **Stay updated** on Next.js security advisories and CVEs
