@@ -69,6 +69,8 @@ jobs:
             --exclude='checklists' \
             --exclude='docker-compose.yml' \
             --exclude='drizzle' \
+            --exclude='DATABASE.md' \
+            --exclude='submission-form.md' \
             --exclude='nixpacks.toml'
 
       - name: Remove unnecessary files from package
