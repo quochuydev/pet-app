@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petcare - Pet Clinic HTML Template Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        nav {
+            background: #2c3e50;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        nav a:hover {
+            opacity: 0.7;
+        }
+        .content {
+            padding: 40px;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+        }
+        h4 {
+            color: #34495e;
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .alert-success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        .alert-info {
+            background: #d1ecf1;
+            border-left-color: #17a2b8;
+        }
+        .file-tree {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 25px;
+            border-radius: 8px;
+            font-family: 'Courier New', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 20px 0;
+            overflow-x: auto;
+            border: 1px solid #333;
+        }
+        .file-tree .directory {
+            color: #4ec9b0;
+            font-weight: bold;
+        }
+        .file-tree .file {
+            color: #9cdcfe;
+        }
+        .file-tree .comment {
+            color: #6a9955;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 3px solid #667eea;
+        }
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Petcare - Pet Clinic Template</h1>
+            <p>Modern Next.js 16 Pet Clinic Landing Page Documentation</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">Version 1.0.0 | December 2025</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#file-structure">File Structure</a></li>
+                <li><a href="#customization">Customization</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#browser-support">Browser Support</a></li>
+                <li><a href="#credits">Credits</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <!-- INTRODUCTION -->
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>Thank you for purchasing <strong>Petcare - Pet Clinic HTML Template</strong>! This documentation will help you set up and customize your new template.</p>
+
+                <p><strong>Petcare</strong> is a modern, responsive Next.js 16 template specifically designed for veterinary clinics, pet hospitals, animal care services, and pet-related businesses. Built with the latest web technologies including React 19, TypeScript, and Tailwind CSS 4, this template provides a professional foundation for your pet care website.</p>
+
+                <div class="alert alert-success">
+                    <strong>What's Included:</strong> This package contains all source files, images, documentation, and everything you need to launch your pet clinic website.
+                </div>
+
+                <h3>Template Overview</h3>
+                <ul>
+                    <li><strong>Framework:</strong> Next.js 16 (App Router)</li>
+                    <li><strong>React Version:</strong> 19.2.0</li>
+                    <li><strong>TypeScript:</strong> Full TypeScript support with strict mode</li>
+                    <li><strong>Styling:</strong> Tailwind CSS 4 with PostCSS</li>
+                    <li><strong>Icons:</strong> Lucide React icon library</li>
+                    <li><strong>Responsive:</strong> Mobile-first design, works on all devices</li>
+                    <li><strong>Performance:</strong> Optimized for fast loading and excellent user experience</li>
+                </ul>
+            </section>
+
+            <!-- FEATURES -->
+            <section id="features">
+                <h2>Features</h2>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>✨ Modern Design</h4>
+                        <p>Clean, professional pet clinic design with calming colors</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📱 Fully Responsive</h4>
+                        <p>Perfect display on mobile, tablet, and desktop devices</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>⚡ Next.js 16</h4>
+                        <p>Built with the latest Next.js App Router architecture</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🎨 Tailwind CSS 4</h4>
+                        <p>Easy customization with utility-first CSS framework</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔧 TypeScript</h4>
+                        <p>Type-safe development for reliable code</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🚀 High Performance</h4>
+                        <p>Optimized for speed and SEO</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📅 Booking System</h4>
+                        <p>Built-in appointment booking functionality</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>👨‍⚕️ Team Showcase</h4>
+                        <p>Professional veterinarian profiles section</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🏥 Services Display</h4>
+                        <p>Showcase your clinic services with beautiful cards</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>💬 Testimonials</h4>
+                        <p>Display customer reviews and ratings</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🎯 Call-to-Action</h4>
+                        <p>Conversion-optimized CTA sections</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔐 Admin Dashboard</h4>
+                        <p>Manage appointments with admin panel</p>
+                    </div>
+                </div>
+
+                <h3>Pages Included</h3>
+                <ul>
+                    <li><strong>Home Page</strong> - Complete landing page with all sections</li>
+                    <li><strong>Services Page</strong> - Detailed services listing</li>
+                    <li><strong>Service Detail Pages</strong> - Individual service descriptions</li>
+                    <li><strong>Booking Page</strong> - Appointment booking form</li>
+                    <li><strong>Booking Success Page</strong> - Confirmation page</li>
+                    <li><strong>Admin Login</strong> - Secure admin authentication</li>
+                    <li><strong>Admin Dashboard</strong> - Appointment management</li>
+                </ul>
+
+                <h3>Main Sections</h3>
+                <ol>
+                    <li><strong>Header & Navigation</strong> - Responsive header with mobile menu</li>
+                    <li><strong>Hero Section</strong> - Eye-catching hero with call-to-action</li>
+                    <li><strong>Services Section</strong> - Display your clinic services</li>
+                    <li><strong>Team Section</strong> - Showcase your veterinarians</li>
+                    <li><strong>Why Choose Us</strong> - Highlight your clinic's advantages</li>
+                    <li><strong>Testimonials</strong> - Customer reviews and feedback</li>
+                    <li><strong>Call-to-Action</strong> - Convert visitors to appointments</li>
+                    <li><strong>Footer</strong> - Complete footer with contact info</li>
+                </ol>
+            </section>
+
+            <!-- INSTALLATION -->
+            <section id="installation">
+                <h2>Installation</h2>
+
+                <div class="alert">
+                    <strong>Prerequisites:</strong> You need Node.js (version 18 or higher) installed on your computer. Download from <a href="https://nodejs.org/" target="_blank">nodejs.org</a>
+                </div>
+
+                <h3>Step 1: Extract Files</h3>
+                <p>Extract the downloaded ZIP file to your desired location on your computer.</p>
+
+                <h3>Step 2: Install pnpm (Package Manager)</h3>
+                <p>This project uses pnpm as the package manager. Open your terminal/command prompt and install it globally:</p>
+                <pre><code>npm install -g pnpm</code></pre>
+
+                <h3>Step 3: Install Dependencies</h3>
+                <p>Navigate to the project folder in your terminal and install all required packages:</p>
+                <pre><code>cd pet-app
+pnpm install</code></pre>
+                <p>This will install all necessary dependencies including Next.js, React, Tailwind CSS, and other libraries.</p>
+
+                <h3>Step 4: Set Up Database (Optional)</h3>
+                <p>If you want to use the booking system with database functionality:</p>
+                <ol>
+                    <li>Create a <code>.env.local</code> file in the root directory</li>
+                    <li>Add your database connection string:
+                        <pre><code>DATABASE_URL="your-postgres-connection-string"
+JWT_SECRET="your-secret-key-here"</code></pre>
+                    </li>
+                    <li>Run database migrations:
+                        <pre><code>pnpm db:push</code></pre>
+                    </li>
+                </ol>
+
+                <div class="alert alert-info">
+                    <strong>Note:</strong> The template works perfectly without a database for static display. The database is only needed if you want the booking system to save appointments.
+                </div>
+
+                <h3>Step 5: Start Development Server</h3>
+                <p>Start the development server to preview your site:</p>
+                <pre><code>pnpm dev</code></pre>
+                <p>Open your browser and visit <code>http://localhost:3000</code> to see your template in action!</p>
+
+                <h3>Step 6: Build for Production</h3>
+                <p>When you're ready to deploy your website:</p>
+                <pre><code>pnpm build
+pnpm start</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Your template is now installed and running. You can start customizing it to match your pet clinic's branding.
+                </div>
+            </section>
+
+            <!-- CUSTOMIZATION -->
+            <section id="customization">
+                <h2>Customization Guide</h2>
+
+                <p>This guide will help you customize the template to match your pet clinic's branding and needs.</p>
+
+                <h3>1. Changing Colors</h3>
+                <p>To change the color scheme, edit <code>app/globals.css</code>:</p>
+                <pre><code>@layer base {
+  :root {
+    /* Primary color (blue/teal) */
+    --primary: 210 100% 50%;
+
+    /* Secondary color (orange/coral) */
+    --secondary: 25 95% 58%;
+
+    /* Accent color */
+    --accent: 160 84% 39%;
+
+    /* Background colors */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+  }
+}</code></pre>
+
+                <div class="alert">
+                    <strong>Tip:</strong> Colors use HSL format. Use a tool like <a href="https://hslpicker.com/" target="_blank">HSL Color Picker</a> to find your desired colors.
+                </div>
+
+                <h3>2. Changing Logo and Images</h3>
+                <h4>Update Logo:</h4>
+                <ol>
+                    <li>Replace your logo file in the <code>public/</code> folder</li>
+                    <li>Update the logo reference in <code>app/components/Header.tsx</code>:
+                        <pre><code>&lt;div className="text-2xl font-bold text-primary"&gt;
+  YourClinicName
+&lt;/div&gt;</code></pre>
+                    </li>
+                </ol>
+
+                <h4>Update Images:</h4>
+                <ol>
+                    <li>Add your images to the <code>public/</code> folder</li>
+                    <li>Update image paths in components:
+                        <pre><code>// In Hero.tsx, Services.tsx, Team.tsx, etc.
+&lt;Image
+  src="/your-image.jpg"
+  alt="Your description"
+  width={600}
+  height={400}
+/&gt;</code></pre>
+                    </li>
+                </ol>
+
+                <h3>3. Editing Content</h3>
+                <p>Content for each section can be edited in the respective component files:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>File to Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Navigation Menu</td>
+                            <td><code>app/components/Header.tsx</code></td>
+                        </tr>
+                        <tr>
+                            <td>Hero Section</td>
+                            <td><code>app/components/Hero.tsx</code></td>
+                        </tr>
+                        <tr>
+                            <td>Services</td>
+                            <td><code>app/components/Services.tsx</code></td>
+                        </tr>
+                        <tr>
+                            <td>Team Members</td>
+                            <td><code>app/components/Team.tsx</code></td>
+                        </tr>
+                        <tr>
+                            <td>Why Choose Us</td>
+                            <td><code>app/components/WhyChooseUs.tsx</code></td>
+                        </tr>
+                        <tr>
+                            <td>Footer</td>
+                            <td><code>app/components/Footer.tsx</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>4. Changing Fonts</h3>
+                <p>The template uses Geist fonts by default. To change fonts:</p>
+                <ol>
+                    <li>Import your desired font in <code>app/layout.tsx</code>:
+                        <pre><code>import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })</code></pre>
+                    </li>
+                    <li>Apply the font:
+                        <pre><code>&lt;body className={inter.className}&gt;</code></pre>
+                    </li>
+                </ol>
+
+                <h3>5. Adding/Removing Sections</h3>
+                <p>To add or remove sections from the homepage, edit <code>app/page.tsx</code>:</p>
+                <pre><code>export default function Home() {
+  return (
+    &lt;&gt;
+      &lt;Header /&gt;
+      &lt;Hero /&gt;
+      &lt;Services /&gt;
+      &lt;Team /&gt;
+      &lt;WhyChooseUs /&gt;
+      {/* Add your new section here */}
+      &lt;CTA /&gt;
+      &lt;Footer /&gt;
+    &lt;/&gt;
+  )
+}</code></pre>
+
+                <h3>6. Customizing the Booking Form</h3>
+                <p>Edit the booking form in <code>app/booking/page.tsx</code>:</p>
+                <ul>
+                    <li>Add/remove form fields</li>
+                    <li>Change validation rules</li>
+                    <li>Customize success messages</li>
+                    <li>Add email notifications</li>
+                </ul>
+
+                <h3>7. Modifying Tailwind Configuration</h3>
+                <p>For advanced styling customization, edit <code>tailwind.config.ts</code>:</p>
+                <pre><code>export default {
+  theme: {
+    extend: {
+      colors: {
+        primary: 'hsl(var(--primary))',
+        secondary: 'hsl(var(--secondary))',
+      },
+      fontFamily: {
+        sans: ['var(--font-geist-sans)'],
+      },
+      // Add your custom styles here
+    },
+  },
+}</code></pre>
+            </section>
+
+            <!-- COMPONENTS -->
+            <section id="components">
+                <h2>Components Reference</h2>
+
+                <p>Detailed information about each component and how to customize them.</p>
+
+                <h3>Header Component</h3>
+                <p><strong>File:</strong> <code>app/components/Header.tsx</code></p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Responsive navigation with mobile hamburger menu</li>
+                    <li>Sticky header on scroll</li>
+                    <li>Call-to-action button</li>
+                </ul>
+                <p><strong>Customization:</strong></p>
+                <ul>
+                    <li>Update navigation links in the <code>navLinks</code> array</li>
+                    <li>Change logo text or add logo image</li>
+                    <li>Modify CTA button text and link</li>
+                </ul>
+
+                <h3>Hero Component</h3>
+                <p><strong>File:</strong> <code>app/components/Hero.tsx</code></p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Large hero image</li>
+                    <li>Headline and subheadline</li>
+                    <li>Call-to-action buttons</li>
+                </ul>
+                <p><strong>Customization:</strong></p>
+                <ul>
+                    <li>Replace hero image in <code>public/</code> folder</li>
+                    <li>Update headline and description text</li>
+                    <li>Change button labels and destinations</li>
+                </ul>
+
+                <h3>Services Component</h3>
+                <p><strong>Files:</strong> <code>app/components/Services.tsx</code> & <code>ServiceCard.tsx</code></p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Grid layout of service cards</li>
+                    <li>Icons for each service</li>
+                    <li>Service descriptions</li>
+                </ul>
+                <p><strong>Customization:</strong></p>
+                <ul>
+                    <li>Add/remove services in the <code>services</code> array</li>
+                    <li>Change service icons (using Lucide React icons)</li>
+                    <li>Update service descriptions and images</li>
+                </ul>
+
+                <h3>Team Component</h3>
+                <p><strong>Files:</strong> <code>app/components/Team.tsx</code> & <code>VetCard.tsx</code></p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Grid display of team members</li>
+                    <li>Photos and credentials</li>
+                    <li>Specializations</li>
+                </ul>
+                <p><strong>Customization:</strong></p>
+                <ul>
+                    <li>Update team member information in the <code>vets</code> array</li>
+                    <li>Replace veterinarian photos in <code>public/</code></li>
+                    <li>Modify card styling in <code>VetCard.tsx</code></li>
+                </ul>
+
+                <h3>WhyChooseUs Component</h3>
+                <p><strong>File:</strong> <code>app/components/WhyChooseUs.tsx</code></p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Key benefits display</li>
+                    <li>Icon-based features</li>
+                    <li>Statistics or highlights</li>
+                </ul>
+                <p><strong>Customization:</strong></p>
+                <ul>
+                    <li>Edit benefits in the <code>benefits</code> array</li>
+                    <li>Change icons for each benefit</li>
+                    <li>Update section title and description</li>
+                </ul>
+
+                <h3>CTA Component</h3>
+                <p><strong>File:</strong> <code>app/components/CTA.tsx</code></p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Call-to-action section</li>
+                    <li>Prominent button</li>
+                    <li>Persuasive copy</li>
+                </ul>
+                <p><strong>Customization:</strong></p>
+                <ul>
+                    <li>Update CTA text and messaging</li>
+                    <li>Change button style and destination</li>
+                    <li>Modify background color/gradient</li>
+                </ul>
+
+                <h3>Footer Component</h3>
+                <p><strong>File:</strong> <code>app/components/Footer.tsx</code></p>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Multi-column footer layout</li>
+                    <li>Contact information</li>
+                    <li>Social media links</li>
+                    <li>Quick links</li>
+                </ul>
+                <p><strong>Customization:</strong></p>
+                <ul>
+                    <li>Update contact details (phone, email, address)</li>
+                    <li>Add/remove footer columns</li>
+                    <li>Change social media links</li>
+                </ul>
+            </section>
+
+            <!-- BROWSER SUPPORT -->
+            <section id="browser-support">
+                <h2>Browser Support</h2>
+
+                <p>This template is tested and fully compatible with the following browsers:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Browser</th>
+                            <th>Supported Versions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chrome</td>
+                            <td>Latest 2 versions</td>
+                        </tr>
+                        <tr>
+                            <td>Firefox</td>
+                            <td>Latest 2 versions</td>
+                        </tr>
+                        <tr>
+                            <td>Safari</td>
+                            <td>Latest 2 versions (macOS & iOS 14+)</td>
+                        </tr>
+                        <tr>
+                            <td>Edge</td>
+                            <td>Latest 2 versions</td>
+                        </tr>
+                        <tr>
+                            <td>Chrome Mobile</td>
+                            <td>Android 10+</td>
+                        </tr>
+                        <tr>
+                            <td>Safari Mobile</td>
+                            <td>iOS 14+</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Responsive Breakpoints</h3>
+                <p>The template uses mobile-first responsive design with the following breakpoints:</p>
+                <ul>
+                    <li><strong>Mobile:</strong> 320px - 767px</li>
+                    <li><strong>Tablet:</strong> 768px - 1023px</li>
+                    <li><strong>Desktop:</strong> 1024px and above</li>
+                </ul>
+
+                <h3>Performance</h3>
+                <ul>
+                    <li>Optimized for Google PageSpeed Insights (80+ score)</li>
+                    <li>Fast page load times (under 3 seconds on 3G)</li>
+                    <li>Lazy loading for images</li>
+                    <li>Optimized assets and code splitting</li>
+                </ul>
+            </section>
+
+            <!-- CREDITS -->
+            <section id="credits">
+                <h2>Credits & Licenses</h2>
+
+                <p>This template uses the following open-source libraries and resources. All are properly licensed for commercial use.</p>
+
+                <h3>JavaScript Libraries</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Library</th>
+                            <th>Version</th>
+                            <th>License</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Next.js</td>
+                            <td>16.0.7</td>
+                            <td>MIT</td>
+                            <td><a href="https://nextjs.org/" target="_blank">nextjs.org</a></td>
+                        </tr>
+                        <tr>
+                            <td>React</td>
+                            <td>19.2.0</td>
+                            <td>MIT</td>
+                            <td><a href="https://react.dev/" target="_blank">react.dev</a></td>
+                        </tr>
+                        <tr>
+                            <td>Tailwind CSS</td>
+                            <td>4.x</td>
+                            <td>MIT</td>
+                            <td><a href="https://tailwindcss.com/" target="_blank">tailwindcss.com</a></td>
+                        </tr>
+                        <tr>
+                            <td>Lucide React</td>
+                            <td>0.556.0</td>
+                            <td>ISC</td>
+                            <td><a href="https://lucide.dev/" target="_blank">lucide.dev</a></td>
+                        </tr>
+                        <tr>
+                            <td>Class Variance Authority</td>
+                            <td>0.7.1</td>
+                            <td>Apache 2.0</td>
+                            <td><a href="https://cva.style/" target="_blank">cva.style</a></td>
+                        </tr>
+                        <tr>
+                            <td>Tailwind Merge</td>
+                            <td>3.4.0</td>
+                            <td>MIT</td>
+                            <td><a href="https://github.com/dcastil/tailwind-merge" target="_blank">GitHub</a></td>
+                        </tr>
+                        <tr>
+                            <td>Drizzle ORM</td>
+                            <td>0.45.0</td>
+                            <td>Apache 2.0</td>
+                            <td><a href="https://orm.drizzle.team/" target="_blank">drizzle.team</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Fonts</h3>
+                <ul>
+                    <li><strong>Geist Sans & Geist Mono</strong> - Vercel's font family (SIL Open Font License)</li>
+                    <li>Font files are included with Next.js and loaded automatically</li>
+                </ul>
+
+                <h3>Images</h3>
+                <div class="alert">
+                    <strong>Important:</strong> Demo images included in this template are for demonstration purposes only. Replace them with your own images before going live. We recommend using:
+                </div>
+                <ul>
+                    <li><strong>Unsplash</strong> - <a href="https://unsplash.com/" target="_blank">unsplash.com</a> (Free for commercial use)</li>
+                    <li><strong>Pexels</strong> - <a href="https://www.pexels.com/" target="_blank">pexels.com</a> (Free for commercial use)</li>
+                    <li><strong>Pixabay</strong> - <a href="https://pixabay.com/" target="_blank">pixabay.com</a> (Free for commercial use)</li>
+                </ul>
+
+                <h3>Icons</h3>
+                <p><strong>Lucide Icons</strong> - Beautiful, consistent icon set used throughout the template</p>
+                <ul>
+                    <li>License: ISC License (free for commercial use)</li>
+                    <li>Website: <a href="https://lucide.dev/" target="_blank">lucide.dev</a></li>
+                    <li>Over 1000+ icons available</li>
+                </ul>
+
+                <h3>License Information</h3>
+                <p>This template is licensed under the Envato Regular or Extended License, depending on your purchase:</p>
+                <ul>
+                    <li><strong>Regular License:</strong> Use in a single end product that end users are not charged for</li>
+                    <li><strong>Extended License:</strong> Use in a single end product that end users can be charged for</li>
+                </ul>
+                <p>Read full license details at: <a href="https://themeforest.net/licenses/standard" target="_blank">ThemeForest Licenses</a></p>
+            </section>
+
+            <!-- SUPPORT -->
+            <section id="support">
+                <h2>Support & FAQ</h2>
+
+                <h3>Getting Support</h3>
+                <p>If you need help with this template, we're here to assist you:</p>
+                <ul>
+                    <li><strong>Documentation:</strong> Read this documentation thoroughly first</li>
+                    <li><strong>Support Period:</strong> 6 months of support included with purchase</li>
+                    <li><strong>Response Time:</strong> We aim to respond within 24-48 hours</li>
+                    <li><strong>Support Email:</strong> [Your support email here]</li>
+                </ul>
+
+                <div class="alert">
+                    <strong>Before contacting support:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>Make sure you've read this documentation</li>
+                        <li>Check that Node.js and pnpm are properly installed</li>
+                        <li>Verify all dependencies are installed (<code>pnpm install</code>)</li>
+                        <li>Include error messages or screenshots when reporting issues</li>
+                    </ul>
+                </div>
+
+                <h3>Frequently Asked Questions</h3>
+
+                <h4>Q: Can I use this template for multiple websites?</h4>
+                <p>A: You need a separate license for each website. One purchase = one website.</p>
+
+                <h4>Q: Can I use this template for client projects?</h4>
+                <p>A: Yes, with the Extended License you can use it for client projects.</p>
+
+                <h4>Q: Do I need a database to use this template?</h4>
+                <p>A: No, the template works perfectly as a static website. Database is only needed if you want to store booking appointments.</p>
+
+                <h4>Q: How do I deploy this template to a live server?</h4>
+                <p>A: Run <code>pnpm build</code> then upload the <code>.next</code> folder and other files to a Node.js hosting service (Vercel, Netlify, etc.).</p>
+
+                <h4>Q: Can I request customization services?</h4>
+                <p>A: Yes! Contact us for custom development work. Additional fees apply for customization services.</p>
+
+                <h4>Q: How do I update to newer versions?</h4>
+                <p>A: We'll notify you of major updates. You can download the latest version from your ThemeForest downloads page.</p>
+
+                <h4>Q: Is the booking system functional?</h4>
+                <p>A: Yes, with database setup. Without a database, it displays a demo form. Follow the installation guide to connect a database.</p>
+
+                <h4>Q: Can I remove the demo content?</h4>
+                <p>A: Absolutely! All content, images, and text are meant to be replaced with your clinic's information.</p>
+
+                <h4>Q: Does this work on mobile devices?</h4>
+                <p>A: Yes, it's fully responsive and tested on all common mobile devices and screen sizes.</p>
+
+                <h4>Q: What if I find a bug?</h4>
+                <p>A: Please report it to us immediately with details, and we'll fix it as soon as possible.</p>
+
+                <h3>Changelog</h3>
+                <h4>Version 1.0.0 - December 2025</h4>
+                <ul>
+                    <li>Initial release</li>
+                    <li>Complete pet clinic landing page</li>
+                    <li>Booking system with database integration</li>
+                    <li>Admin dashboard for appointment management</li>
+                    <li>Fully responsive design</li>
+                    <li>Next.js 16 & React 19</li>
+                </ul>
+
+                <h3>Thank You!</h3>
+                <p>Thank you for purchasing <strong>Petcare - Pet Clinic Template</strong>. We hope you create an amazing website for your pet clinic!</p>
+                <p>If you're happy with this product, please consider leaving a 5-star rating on ThemeForest. It helps us continue creating quality templates.</p>
+            </section>
+        </div>
+
+        <footer>
+            <p><strong>Petcare - Pet Clinic Template</strong></p>
+            <p>Documentation Version 1.0.0 | December 2025</p>
+            <p style="margin-top: 15px;">Built with ❤️ for pet lovers</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -60,7 +60,7 @@ This comprehensive checklist covers all requirements for successfully submitting
 - [x] **No deprecated tags** - use modern HTML5 elements
 - [x] **Proper heading hierarchy** - h1, h2, h3 in logical order
 - [x] **Accessible forms** - labels associated with inputs
-- [ ] **Alt attributes on images** - for accessibility
+- [x] **Alt attributes on images** - for accessibility
 
 ```html
 <!--  Good HTML structure -->
@@ -211,16 +211,16 @@ document.addEventListener('DOMContentLoaded', () => {
 ## Documentation Requirements
 
 ### Documentation File (REQUIRED)
-- [ ] **Create comprehensive documentation** (PDF or HTML)
-- [ ] **Written in clear English** - no machine translation
-- [ ] **Include installation instructions** - step-by-step setup
-- [ ] **Include customization guide** - how to modify colors, fonts, etc.
-- [ ] **Usage instructions** - how to use features
-- [ ] **Treat buyer as beginner** - assume minimal coding knowledge
-- [ ] **Include screenshots/visuals** - illustrate important points
-- [ ] **List all dependencies** - plugins, libraries, fonts
-- [ ] **Credits section** - list all third-party resources
-- [ ] **Support contact information** - how buyers can get help
+- [x] **Create comprehensive documentation** (PDF or HTML)
+- [x] **Written in clear English** - no machine translation
+- [x] **Include installation instructions** - step-by-step setup
+- [x] **Include customization guide** - how to modify colors, fonts, etc.
+- [x] **Usage instructions** - how to use features
+- [x] **Treat buyer as beginner** - assume minimal coding knowledge
+- [x] **Include screenshots/visuals** - illustrate important points
+- [x] **List all dependencies** - plugins, libraries, fonts
+- [x] **Credits section** - list all third-party resources
+- [x] **Support contact information** - how buyers can get help
 
 ### Documentation Structure
 ```
@@ -241,20 +241,20 @@ Documentation/
 - [ ] **No longer required in main zip** - but recommended
 
 ### Documentation Content Checklist
-- [ ] Table of contents
-- [ ] Introduction/welcome message
-- [ ] Features list
-- [ ] Installation instructions
-- [ ] File structure explanation
-- [ ] Customization guide (colors, fonts, logos)
-- [ ] HTML structure explanation
-- [ ] CSS customization guide
-- [ ] JavaScript functionality overview
-- [ ] Browser compatibility list
-- [ ] Credits and licenses
-- [ ] Changelog (version history)
-- [ ] Support information
-- [ ] FAQ section
+- [x] Table of contents
+- [x] Introduction/welcome message
+- [x] Features list
+- [x] Installation instructions
+- [x] File structure explanation
+- [x] Customization guide (colors, fonts, logos)
+- [x] HTML structure explanation
+- [x] CSS customization guide
+- [x] JavaScript functionality overview
+- [x] Browser compatibility list
+- [x] Credits and licenses
+- [x] Changelog (version history)
+- [x] Support information
+- [x] FAQ section
 
 ---
 
@@ -296,7 +296,7 @@ theme-name/
 - [ ] **Common elements grouped** - CSS, JS, images in respective folders
 - [ ] **Labeled folders clearly** - descriptive names
 - [ ] **No duplicate files** - clean and efficient
-- [ ] **Include README.txt** - basic information about the item
+- [x] **Include README.txt** - basic information about the item
 - [ ] **License files** - for GPL themes (Joomla, Drupal, OpenCart, osCommerce)
 - [ ] **No unnecessary files** - remove .DS_Store, Thumbs.db, etc.
 
