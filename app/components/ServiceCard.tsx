@@ -6,6 +6,7 @@ interface ServiceCardProps {
   title: string;
   description: string;
   icon: LucideIcon;
+  slug: string;
 }
 
 export default function ServiceCard({
@@ -13,6 +14,7 @@ export default function ServiceCard({
   title,
   description,
   icon: Icon,
+  slug,
 }: ServiceCardProps) {
   return (
     <div className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl">
@@ -37,7 +39,7 @@ export default function ServiceCard({
           {description}
         </p>
         <a
-          href="#contact"
+          href={`/services/${slug}`}
           className="mt-4 inline-flex items-center text-base font-semibold text-blue-600 transition-colors hover:text-blue-700"
         >
           Learn More

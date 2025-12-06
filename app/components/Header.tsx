@@ -7,9 +7,9 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "Services", href: "#services" },
-    { name: "Our Vets", href: "#vets" },
+    { name: "Our Vets", href: "#our-vets" },
     { name: "About Us", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
@@ -20,7 +20,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo/Clinic Name */}
           <div className="flex-shrink-0">
-            <a href="#home" className="text-2xl font-bold text-blue-600">
+            <a href="/" className="text-2xl font-bold text-blue-600">
               PetCare Clinic
             </a>
           </div>
@@ -37,7 +37,7 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#book"
+              href="/booking"
               className="rounded-full bg-blue-600 px-6 py-2.5 text-base font-semibold text-white transition-colors hover:bg-blue-700"
             >
               Book Appointment
@@ -77,7 +77,7 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="#book"
+                href="/booking"
                 className="mt-2 block rounded-full bg-blue-600 px-6 py-2.5 text-center text-base font-semibold text-white hover:bg-blue-700"
                 onClick={() => setMobileMenuOpen(false)}
               >

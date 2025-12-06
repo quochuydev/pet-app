@@ -33,7 +33,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             {/* Primary Button */}
             <a
-              href="#book"
+              href="/booking"
               className="rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
             >
               Schedule Appointment
