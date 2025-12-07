@@ -67,9 +67,7 @@ jobs:
             --exclude='CLAUDE.md' \
             --exclude='design' \
             --exclude='checklists' \
-            --exclude='docker-compose.yml' \
-            --exclude='drizzle' \
-            --exclude='DATABASE.md' \
+            --exclude='preview' \
             --exclude='submission-form.md' \
             --exclude='nixpacks.toml'
 
