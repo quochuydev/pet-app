@@ -8,10 +8,11 @@ import Testimonials from "./components/Testimonials";
 import WhyChooseUs from "./components/WhyChooseUs";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import BackgroundEffects from "./components/BackgroundEffects";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="grain-overlay relative min-h-screen bg-white">
       {/* Skip to content link for accessibility */}
       <a
         href="#main-content"
@@ -20,6 +21,7 @@ export default function Home() {
         Skip to main content
       </a>
 
+      <BackgroundEffects />
       <Header />
 
       <main id="main-content">

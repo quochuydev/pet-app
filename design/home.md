@@ -403,6 +403,88 @@ transition={{ type: "spring", stiffness: 200 }}
 
 ---
 
+## Background Effects (Modern Style)
+
+The page uses a modern animated background system with gradient blobs and subtle grain texture for a premium, eye-catching look perfect for portfolio showcases.
+
+### Global Background Elements
+
+**1. Animated Gradient Blobs**
+- 3-4 large soft gradient blobs positioned behind content
+- Colors: Blue (#3B82F6), Purple (#8B5CF6), Teal (#14B8A6), Pink (#EC4899)
+- Size: 400-600px diameter each
+- Animation: Slow drift/morph (20-30s infinite loop)
+- Blur: `filter: blur(80-100px)` for soft edges
+- Opacity: 30-50% to not overpower content
+
+**2. Grain/Noise Texture Overlay**
+- SVG noise filter applied globally
+- Opacity: 3-5% (very subtle)
+- Adds depth and premium feel
+- Applied via CSS `::before` pseudo-element
+
+### Implementation
+
+```typescript
+// Animated blob component
+function GradientBlob({ color, position, delay }: BlobProps) {
+  return (
+    <motion.div
+      className={`absolute rounded-full blur-3xl ${color}`}
+      style={{ ...position, width: 500, height: 500 }}
+      animate={{
+        x: [0, 100, -50, 0],
+        y: [0, -80, 60, 0],
+        scale: [1, 1.2, 0.9, 1],
+      }}
+      transition={{
+        duration: 25,
+        repeat: Infinity,
+        delay,
+        ease: "easeInOut",
+      }}
+    />
+  );
+}
+```
+
+**Blob Positions:**
+| Blob | Color | Position | Animation Delay |
+|------|-------|----------|-----------------|
+| 1 | Blue (bg-blue-400/30) | top-left | 0s |
+| 2 | Purple (bg-purple-400/30) | top-right | 5s |
+| 3 | Teal (bg-teal-400/30) | bottom-left | 10s |
+| 4 | Pink (bg-pink-400/30) | center-right | 15s |
+
+**Grain Texture CSS:**
+```css
+.grain-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,..."); /* noise SVG */
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 100;
+}
+```
+
+### Section-Specific Backgrounds
+
+| Section | Background |
+|---------|------------|
+| Hero | Gradient blobs visible, image overlay |
+| Statistics | Light gray (bg-gray-50) + blobs visible through |
+| Services | White + blobs subtly visible |
+| Gallery | White |
+| Team | Light gray (bg-gray-50) |
+| Testimonials | White + blobs visible |
+| Why Choose Us | Light gray (bg-gray-50) |
+| CTA | Blue gradient (overrides blobs) |
+| Footer | Dark gray (overrides blobs) |
+
+---
+
 ## Color Scheme
 
 ```
@@ -412,6 +494,9 @@ Primary Colors:
 
 Secondary Colors:
 - Orange: #F59E0B (amber-500) - warmth, CTAs
+- Purple: #8B5CF6 (purple-500) - accent for blobs
+- Teal: #14B8A6 (teal-500) - accent for blobs
+- Pink: #EC4899 (pink-500) - accent for blobs
 
 Neutral Colors:
 - White: #FFFFFF
@@ -513,4 +598,4 @@ Large Desktop: 1280px+ (xl)
 ---
 
 **Last Updated:** December 12, 2025
-**Version:** 2.0 - Enhanced with animations
+**Version:** 2.1 - Added animated gradient blobs and grain texture

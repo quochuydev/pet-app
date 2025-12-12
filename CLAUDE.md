@@ -73,6 +73,25 @@ When implementing components:
 - JSX mode: `react-jsx`
 - Module resolution: bundler
 
+## Design-First Workflow (MANDATORY)
+
+**IMPORTANT: Always update design documentation BEFORE writing code.**
+
+The `./design` folder is the source of truth for all UI/UX decisions. When making any visual or functional changes:
+
+1. **First**: Update the relevant design file in `./design/` (e.g., `home.md`, `layout.md`)
+2. **Then**: Implement the code based on the updated design specification
+3. **Never**: Write code first and document later
+
+This ensures:
+- Design decisions are documented and trackable
+- Future developers (or AI) understand the intent behind implementations
+- Consistency between design specs and actual code
+
+Design files location:
+- `./design/home.md` - Home page design specification
+- `./design/layout.md` - Overall layout and component design
+
 ## Important Notes
 
 - This is a **client-side landing page** - no backend or API routes required yet
