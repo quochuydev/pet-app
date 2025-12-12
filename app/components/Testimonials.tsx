@@ -85,7 +85,7 @@ export default function Testimonials() {
           {/* Navigation Buttons */}
           <button
             onClick={goToPrev}
-            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-3 shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl md:-left-6"
+            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl hover:scale-110 md:-left-6"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-6 w-6 text-gray-600" />
@@ -93,7 +93,7 @@ export default function Testimonials() {
 
           <button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-3 shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl md:-right-6"
+            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-white p-3 shadow-lg transition-all hover:bg-gray-50 hover:shadow-xl hover:scale-110 md:-right-6"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-6 w-6 text-gray-600" />
@@ -107,8 +107,18 @@ export default function Testimonials() {
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="rounded-2xl bg-gray-50 p-8 md:p-12"
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.1}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x > 30 || info.velocity.x > 300) {
+                    goToPrev();
+                  } else if (info.offset.x < -30 || info.velocity.x < -300) {
+                    goToNext();
+                  }
+                }}
+                className="cursor-grab rounded-2xl bg-gray-50 p-8 active:cursor-grabbing md:p-12"
               >
                 {/* Quote Icon */}
                 <Quote className="mb-6 h-12 w-12 text-blue-200" />
@@ -147,10 +157,10 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-3 w-3 rounded-full transition-all ${
+                className={`h-3 cursor-pointer rounded-full transition-all ${
                   index === currentIndex
                     ? "w-8 bg-blue-600"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    : "w-3 bg-gray-300 hover:bg-gray-400"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
