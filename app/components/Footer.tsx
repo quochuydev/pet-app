@@ -1,4 +1,35 @@
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
+
+const socialLinks = [
+  { icon: Facebook, href: "#", label: "Facebook", hoverColor: "hover:bg-blue-600" },
+  { icon: Twitter, href: "#", label: "Twitter", hoverColor: "hover:bg-blue-400" },
+  { icon: Instagram, href: "#", label: "Instagram", hoverColor: "hover:bg-pink-600" },
+];
+
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/#services" },
+  { name: "Our Team", href: "/#our-vets" },
+  { name: "Contact", href: "/#contact" },
+];
+
+const serviceLinks = [
+  { name: "General Checkup", href: "/services/general-checkup" },
+  { name: "Emergency Care", href: "/services/emergency-care" },
+  { name: "Surgery", href: "/services/surgery" },
+  { name: "Preventive Care", href: "/services/vaccination" },
+];
 
 export default function Footer() {
   return (
@@ -7,7 +38,12 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: About */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h3 className="mb-4 text-lg font-bold text-white">
               PetCare Clinic
             </h3>
@@ -17,110 +53,78 @@ export default function Footer() {
             </p>
             {/* Social Media Icons */}
             <div className="flex gap-4">
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-blue-600"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-blue-400"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-colors hover:bg-pink-600"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  className={`flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 transition-colors ${social.hoverColor}`}
+                  aria-label={social.label}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <social.icon className="h-5 w-5" />
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <h3 className="mb-4 text-lg font-bold text-white">Quick Links</h3>
             <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href="#"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#our-vets"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  Our Team
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  Contact
-                </a>
-              </li>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center transition-colors hover:text-blue-400"
+                  >
+                    <span className="relative">
+                      {link.name}
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-blue-400 transition-all duration-300 group-hover:w-full" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 3: Services */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h3 className="mb-4 text-lg font-bold text-white">Services</h3>
             <ul className="space-y-3 text-sm">
-              <li>
-                <a
-                  href="#services"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  General Checkup
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  Emergency Care
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  Surgery
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#services"
-                  className="transition-colors hover:text-blue-400"
-                >
-                  Preventive Care
-                </a>
-              </li>
+              {serviceLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center transition-colors hover:text-blue-400"
+                  >
+                    <span className="relative">
+                      {link.name}
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-blue-400 transition-all duration-300 group-hover:w-full" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 4: Contact Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <h3 className="mb-4 text-lg font-bold text-white">Contact Info</h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
@@ -135,18 +139,28 @@ export default function Footer() {
                 <Phone className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-400" />
                 <div>
                   <p className="font-semibold text-white">Phone</p>
-                  <p>(555) 123-4567</p>
+                  <a
+                    href="tel:+15551234567"
+                    className="transition-colors hover:text-blue-400"
+                  >
+                    (555) 123-4567
+                  </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-400" />
                 <div>
                   <p className="font-semibold text-white">Email</p>
-                  <p>info@petcareclinic.com</p>
+                  <a
+                    href="mailto:info@petcareclinic.com"
+                    className="transition-colors hover:text-blue-400"
+                  >
+                    info@petcareclinic.com
+                  </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <div className="mt-0.5 h-5 w-5 flex-shrink-0"></div>
+                <div className="mt-0.5 h-5 w-5 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-white">Business Hours</p>
                   <p>Mon-Fri: 8:00 AM - 8:00 PM</p>
@@ -154,7 +168,7 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -167,18 +181,20 @@ export default function Footer() {
               reserved.
             </p>
             <div className="flex gap-6">
-              <a
+              <Link
                 href="#"
-                className="transition-colors hover:text-blue-400"
+                className="group relative transition-colors hover:text-blue-400"
               >
                 Privacy Policy
-              </a>
-              <a
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-blue-400 transition-all duration-300 group-hover:w-full" />
+              </Link>
+              <Link
                 href="#"
-                className="transition-colors hover:text-blue-400"
+                className="group relative transition-colors hover:text-blue-400"
               >
                 Terms of Service
-              </a>
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-blue-400 transition-all duration-300 group-hover:w-full" />
+              </Link>
             </div>
           </div>
         </div>
