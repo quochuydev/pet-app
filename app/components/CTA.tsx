@@ -6,7 +6,7 @@ import { Phone, MapPin } from "lucide-react";
 
 export default function CTA() {
   return (
-    <section id="contact" className="bg-gradient-to-r from-blue-600 to-blue-700 py-20">
+    <section id="contact" className="bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center"

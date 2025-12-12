@@ -53,7 +53,7 @@ export default function AllServicesPage() {
           </p>
           <a
             href="/booking"
-            className="inline-block rounded-full bg-blue-600 px-8 py-4 font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
+            className="inline-block rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 px-8 py-4 font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-indigo-600 hover:shadow-xl"
           >
             Book Now
           </a>

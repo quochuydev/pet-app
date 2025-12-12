@@ -12,7 +12,7 @@ import BackgroundEffects from "./components/BackgroundEffects";
 
 export default function Home() {
   return (
-    <div className="grain-overlay relative min-h-screen bg-white">
+    <div className="grain-overlay relative min-h-screen">
       {/* Skip to content link for accessibility */}
       <a
         href="#main-content"

@@ -119,7 +119,7 @@ export default function Header() {
               >
                 <Link
                   href="/booking"
-                  className="rounded-full bg-blue-600 px-6 py-2.5 text-base font-semibold text-white transition-all hover:bg-blue-700 hover:scale-105"
+                  className="rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-2.5 text-base font-semibold text-white shadow-md transition-all hover:from-blue-600 hover:to-indigo-600 hover:shadow-lg hover:scale-105"
                 >
                   Book Appointment
                 </Link>
@@ -209,7 +209,7 @@ export default function Header() {
                 >
                   <Link
                     href="/booking"
-                    className="mt-4 block rounded-full bg-blue-600 px-6 py-3 text-center text-base font-semibold text-white hover:bg-blue-700"
+                    className="mt-4 block rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-3 text-center text-base font-semibold text-white shadow-md hover:from-blue-600 hover:to-indigo-600 hover:shadow-lg"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Book Appointment

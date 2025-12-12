@@ -597,5 +597,22 @@ Large Desktop: 1280px+ (xl)
 
 ---
 
+## Button Styles
+
+Primary buttons use a gradient for modern appeal:
+
+```css
+/* Primary Button Gradient */
+background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+/* Hover: slightly shifted/brightened */
+background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+```
+
+**Button Classes:**
+- Primary: `bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600`
+- Secondary: `border-2 border-white bg-white/10 backdrop-blur-sm`
+
+---
+
 **Last Updated:** December 12, 2025
-**Version:** 2.1 - Added animated gradient blobs and grain texture
+**Version:** 2.2 - Added gradient buttons

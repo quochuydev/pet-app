@@ -58,7 +58,7 @@ export default function Testimonials() {
   }, [isPaused, goToNext]);
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white/60 backdrop-blur-sm py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.div

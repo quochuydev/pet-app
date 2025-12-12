@@ -93,7 +93,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             <div className="flex items-center sm:col-span-2 lg:col-span-1">
               <a
                 href="/booking"
-                className="w-full rounded-full bg-blue-600 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-blue-700"
+                className="w-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-3 text-center font-semibold text-white shadow-md transition-all hover:from-blue-600 hover:to-indigo-600 hover:shadow-lg"
               >
                 Book Now
               </a>
@@ -211,7 +211,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <a
               href="/booking"
-              className="rounded-full bg-blue-600 px-8 py-4 font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
+              className="rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 px-8 py-4 font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-indigo-600 hover:shadow-xl"
             >
               Book This Service
             </a>

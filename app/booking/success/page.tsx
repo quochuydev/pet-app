@@ -193,7 +193,7 @@ function SuccessContent() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <a
               href="/"
-              className="rounded-full bg-blue-600 px-8 py-4 text-center text-lg font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl"
+              className="rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 px-8 py-4 text-center text-lg font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-indigo-600 hover:shadow-xl"
             >
               Back to Home
             </a>
